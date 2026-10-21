@@ -309,7 +309,6 @@ function renderLogin(){
     <label class="f">PIN de acceso<input class="i pin" id="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off"></label>
     <p class="err" id="lerr"></p>
     <button class="btn primary" id="lgo" style="width:100%;padding:13px;font-size:16px">Entrar</button>
-    <p class="hint">PIN inicial: vendedor 0000 · administrador 1234. Cámbialos en Configuración.</p>
   </div></div>`;
   document.querySelectorAll('.role').forEach(b => b.onclick = () => {
     role = b.dataset.r;

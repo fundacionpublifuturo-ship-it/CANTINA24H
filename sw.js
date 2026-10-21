@@ -1,6 +1,6 @@
 /* Service worker: permite abrir la app aunque se caiga el internet.
    Cada vez que actualices index.html, cambia el número de VERSION. */
-const VERSION = 'cantina-v1.0.0';
+const VERSION = 'cantina-v1.0.1';
 const BASE = ['/', '/index.html', '/manifest.webmanifest', '/favicon.png', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
