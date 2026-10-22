@@ -9,7 +9,7 @@
       ]
     },
     {
-      "source": "/index.html",
+      "source": "/(index.html|config.js)",
       "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
     },
     {

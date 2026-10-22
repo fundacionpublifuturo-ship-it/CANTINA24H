@@ -1,33 +1,33 @@
-# Inventario · Cantina 24 Horas
+# Inventario · Cantina 24 Horas — v2 (Supabase)
 
-Aplicativo web de inventario, ventas, compras, gastos y reportes para uso interno.
-Desarrollado por PUBLISELL.
+Aplicativo web de inventario, ventas, compras, gastos y reportes. Datos en la nube (Supabase),
+acceso simultáneo desde varios dispositivos. Desarrollado por PUBLISELL.
 
 ## Estructura
 ```
-index.html              Aplicativo completo (HTML + CSS + JS)
-manifest.webmanifest    Permite instalarlo como app en celular, tablet y PC
-sw.js                   Funcionamiento sin internet
-vercel.json             Configuración de Vercel (caché y seguridad)
+index.html              Aplicativo completo
+config.js               ← ÚNICO archivo a editar: URL, clave anon y correos
+manifest.webmanifest    Instalación como app
+sw.js                   Carga rápida (no guarda datos de Supabase)
+vercel.json             Caché y seguridad en Vercel
 robots.txt              Evita que Google indexe el aplicativo
-favicon.png             Ícono de la pestaña
-icons/                  Íconos de la app instalada
+favicon.png, icon-192.png, icon-512.png, apple-touch-icon.png   Íconos
 ```
 
-## Acceso inicial
-- Vendedor: PIN 0000
-- Administrador: PIN 1234
-Cámbialos en Configuración el día de la entrega.
+## Puesta en marcha
+1. Supabase → New project (región: East US).
+2. SQL Editor → pegar schema.sql → Run.
+3. Authentication → Users → Add user (2 usuarios, Auto Confirm).
+4. SQL Editor → asignar roles en la tabla perfiles → Run.
+5. Authentication → desactivar "Allow new users to sign up".
+6. Editar `config.js` con URL, clave anon y correos.
+7. Subir todo a GitHub → Vercel redepliega solo.
 
-## Despliegue
-1. Sube todos los archivos a un repositorio de GitHub (privado).
-2. En Vercel: Add New → Project → importar el repositorio → Deploy.
+## Seguridad
+- Vendedor: solo vende, ve sus ventas y el stock. No ve costos ni ganancias.
+- Admin: todo.
+- Toda operación de stock se valida en el servidor (funciones SQL), no en el navegador.
+- La clave anon es pública por diseño. Nunca subir la clave service_role.
 
 ## Actualizar
-1. Reemplaza `index.html` en GitHub.
-2. En `sw.js` sube la versión (ej. `cantina-v1.0.1`).
-3. Vercel publica solo en segundos.
-
-## Datos
-Los datos se guardan en el navegador del dispositivo (localStorage).
-Hacer respaldo semanal: Configuración → Generar respaldo → Copiar.
+Reemplaza el archivo en GitHub y sube la versión en `sw.js` (ej. `cantina-v2.0.1`).
